@@ -22,11 +22,12 @@ def user_input_features():
     # Artık sadece 6 parametre var
     gebelik = st.sidebar.slider('Gebelik Sayısı', 0, 15, 0)
     glikoz = st.sidebar.slider('Glikoz (OGTT - mg/dl)', 0, 200, 100)
-    tansiyon = st.sidebar.slider('Kan Basıncı (Diyastolik - mmHg)', 0, 122, 70)
-    # Cilt kalınlığı kaldırıldı
+    
+    # GÜNCELLEME BURADA: 122 yerine 180 yaptık
+    tansiyon = st.sidebar.slider('Kan Basıncı (Diyastolik - mmHg)', 0, 180, 70)
+    
     insulin = st.sidebar.slider('İnsülin (mu U/ml)', 0, 846, 30)
     bmi = st.sidebar.slider('BMI (Vücut Kitle İndeksi)', 0.0, 67.0, 25.0)
-    # Soyağacı fonksiyonu kaldırıldı
     yas = st.sidebar.slider('Yaş', 21, 81, 30)
     
     data = {
@@ -98,3 +99,4 @@ feature_importance = pd.DataFrame(model.feature_importances_,
                                 columns=['Önem Derecesi']).sort_values('Önem Derecesi', ascending=False)
 
 st.bar_chart(feature_importance)
+
